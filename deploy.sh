@@ -24,7 +24,7 @@ show_undeployed_changes()
 {
     git fetch $REMOTE
     local range="$REMOTE/master..$BRANCH"
-    local commits=$(git log --pretty=format:'%h | %cr: %s (%an)' $range)
+    local commits=$(git log --reverse --pretty=format:'%h | %cr: %s (%an)' $range)
     
     if [ -z "$commits" ]; then
         echo "Nothing to deploy"
